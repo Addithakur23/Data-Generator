@@ -46,7 +46,7 @@ app.post('/g', async (req, res) => {
     res.json(data)
 })
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 

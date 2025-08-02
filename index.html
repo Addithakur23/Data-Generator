@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy Data Generator</title>
+    <style>
+
+        body {
+            margin-top: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+          h1{
+                font-size: 37px;
+            }
+
+        button {
+            width: 12vw;
+            height: 6vh;
+            background-color: #d5ff00;
+            border: none;
+            border-radius: 18px;
+            font-weight: 600;
+            color: #4b51aa;
+        }
+
+        .container {
+            display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 34px;
+    width: 29vw;
+    border: 2px solid black;
+    border-radius: 13px;
+    font-family: ' sans-serif';
+        }
+
+        #status {
+            width: 15vw;
+            max-height: 26vh;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 14px;
+        }
+
+
+        @media (max-width:1200px) {
+          
+            button{
+                width: 15vw;
+            }
+
+            #status{
+                width: 18vw;
+            }
+
+            .container{
+                    width: 32vw;
+            }
+        }
+
+         @media (max-width:950px) {
+            button{
+                width: 33vw;
+            }
+
+            #status{
+                width: 36vw;
+            }
+
+            .container{
+                width: 57vw;
+            }
+        }
+
+         @media (max-width:500px) {
+            button{
+               width: 48vw;
+         
+            }
+
+            #status{
+                width: 56vw;
+            }
+
+            .container{
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Data Generator</h1>
+        <button id="Generate-btn">Generate Data</button>
+        <div id="status">
+
+        </div>
+    </div>
+    <script>
+        document.querySelector("#Generate-btn").addEventListener("click", async () => {
+            let res = await fetch("http://localhost:3000/g/")
+            let data = await res.json()
+            document.querySelector("#status").innerHTML = `Generated Data is :<br>Name: ${data.name}<br> Salary: ${data.salary}<br> City: ${data.city}<br> Language: ${data.language}<br> isManager: ${data.isManager}`;
+            document.getElementById("status").style.border = "2px solid black"
+
+
+        })
+
+    </script>
+</body>
+
+</html>

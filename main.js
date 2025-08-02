@@ -23,7 +23,7 @@ let city = ["New York", "London", "Dubai"]
 let language = ["English", "Hindi", "Arabic"]
 
 
-app.get('/g', async (req, res) => {  
+app.post('/g', async (req, res) => {  
     // random values generator
     let random_boolean = Math.floor(Math.random()*2)
     let random_salary = Math.floor((Math.random() * 30000 + Math.random() * 100000))  

@@ -5,9 +5,7 @@ import cors from "cors"
 
 const app = express()
 app.use(express.json())
-app.use(cors({origin:"*",
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type']})) 
+app.use(cors({origin:"*"})) 
 const port = 3000
 const dummyDataSchema=new mongoose.Schema({
     name:String,
@@ -54,7 +52,7 @@ app.post('/g', async (req, res) => {
 
  
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
     console.log(`Example app listening on port ${port}`)
 })
 

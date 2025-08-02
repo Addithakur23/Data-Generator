@@ -5,6 +5,7 @@ import cors from "cors"
 
 const app = express()
 app.use(express.json())
+app.use(cors({origin:"*"}))
 const port = 3000
 const dummyDataSchema=new mongoose.Schema({
     name:String,
@@ -16,14 +17,15 @@ const dummyDataSchema=new mongoose.Schema({
 })
 
 const Dummydata=mongoose.model("company",dummyDataSchema,"employees")
-app.use(cors())
+
 let conn = await mongoose.connect("mongodb://localhost:27017/company")
 let name = ["Harry", "Jatin", "Aditya"]
 let city = ["New York", "London", "Dubai"]
 let language = ["English", "Hindi", "Arabic"]
 
 
-app.post('/g', async (req, res) => {  
+app.get('/g', async (req, res) => {  
+    // console.log("Reached post request")
     // random values generator
     let random_boolean = Math.floor(Math.random()*2)
     let random_salary = Math.floor((Math.random() * 30000 + Math.random() * 100000))  

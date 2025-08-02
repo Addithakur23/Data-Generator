@@ -43,7 +43,7 @@
 
         #status {
             width: 15vw;
-            max-height: 26vh;
+                height: auto;
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -109,9 +109,15 @@
     </div>
     <script>
         document.querySelector("#Generate-btn").addEventListener("click", async () => {
-            let res = await fetch("http://172.16.2.38:3000/g")
+            let res = await fetch("http://localhost:3000/g",{method:"POST"})
             let data = await res.json()
-            document.querySelector("#status").innerHTML = `Generated Data is :<br>Name: ${data.name}<br> Salary: ${data.salary}<br> City: ${data.city}<br> Language: ${data.language}<br> isManager: ${data.isManager}`;
+            let html="Generated data is:<br>"
+            data.forEach(item => {
+                html+=`Name: ${item.name}<br> Salary: ${item.salary}<br> City: ${item.city}<br> Language: ${item.language}<br> isManager: ${item.isManager}<br><br>`;
+                document.querySelector("#status").innerHTML = html
+                
+            });
+           
             document.getElementById("status").style.border = "2px solid black"
 
 

@@ -21,8 +21,6 @@ app.use(cors({
 
 app.use(express.static("public"))
 
-app.set('view engine', 'ejs');
-app.set("views", path.join(__dirname, "views"));
 
 
 let conn = await mongoose.connect("mongodb://localhost:27017/company")
@@ -36,8 +34,8 @@ const getrandom = (arr) => {
     return arr[randNo]
 }
 
-app.get('/', (req, res) => {
-    res.render("index")
+app.get('/about', (req, res) => {
+    res.send("backend is running")
 });
 
 app.get('/g', async (req, res) => {

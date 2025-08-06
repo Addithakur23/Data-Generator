@@ -18,7 +18,7 @@
         </div>
     </div>
     <script>  document.querySelector("#Generate-btn").addEventListener("click", async () => {
-            let res = await fetch("/g",{method:"GET"})
+            let res = await fetch("/generate")
             let data = await res.json()
             console.log(data)
             let html="Generated data is:<br>"

@@ -38,7 +38,7 @@ app.get('/about', (req, res) => {
     res.send("backend is running")
 });
 
-app.get('/g', async (req, res) => {
+app.get('/generate', async (req, res) => {
 
     await Dummydata.deleteMany({})
     let dummyData
